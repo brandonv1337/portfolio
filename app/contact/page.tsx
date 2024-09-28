@@ -27,15 +27,15 @@ export default function ContactPage() {
           <h2 className="text-4xl font-semibold mb-6">My Information</h2>
           <ul className="space-y-6">
             <li className="flex items-center">
-              <MapPin className="mr-4 text-black" size={24} />
+              <MapPin className="mr-4 text-black dark:text-black" size={24} />
               <span>San Antonio, Texas <br /> Des Moines, Iowa</span>
             </li>
             <li className="flex items-center">
-              <Linkedin className="mr-4 text-black" size={24} />
+              <Linkedin className="mr-4 text-black dark:text-black" size={24} />
               <a href={'https://www.linkedin.com/in/brandon-valadez-84973225b/'}>LinkedIn (Click me!)</a>
             </li>
             <li className="flex items-center">
-              <Mail className="mr-4 text-black" size={24} />
+              <Mail className="mr-4 text-black dark:text-black" size={24} />
               <span>brandon.valadez@drake.edu <br /> brandon.valadez1337@gmail.com</span>
             </li>
           </ul>

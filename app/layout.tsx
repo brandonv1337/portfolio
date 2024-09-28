@@ -45,7 +45,7 @@ function Header() {
               </motion.div>
             ))}
           </div>
-          <button className="md:hidden text-white" onClick={toggleMenu}>
+          <button className="md:hidden text-white dark: text-white" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
@@ -80,7 +80,7 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="bg-black text-white p-6 mt-8">
+    <footer className="bg-black text-white dark:text-white p-6 mt-8">
       <div className="container mx-auto flex flex-col justify-between items-center">
         <p>&copy; 2024 Brandon C. Valadez. All rights reserved.</p>
       </div>
