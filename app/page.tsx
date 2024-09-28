@@ -35,7 +35,7 @@ export default function HomePage() {
         transition={{ duration: 0.5 }}
         className="text-center mb-20"
       >
-        <h1 className="text-5xl font-bold mb-20 text-primary font-playfair-display"> Brandon C. Valadez</h1>
+        <h1 className="text-5xl font-bold mb-20 text-black font-playfair-display"> Brandon C. Valadez</h1>
         <div className="mb-10 relative w-full max-w-3xl mx-auto aspect-video">
   <video
     ref={videoRef}
@@ -60,7 +60,7 @@ export default function HomePage() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mb-20"
       >
-        <h2 className="text-4xl font-bold mb-10 text-center text-primary">Featured Projects</h2>
+        <h2 className="text-4xl font-bold mb-10 text-center text-black">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {projects.map((project) => (
             <motion.div
@@ -83,8 +83,8 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <h2 className="text-4xl font-bold mb-5 text-center text-primary">Testimonials</h2>
-        <h2 className="text-1xl mb-10 text-center text-primary">(Totally legit reviews btw)</h2>
+        <h2 className="text-4xl font-bold mb-5 text-center text-black">Testimonials</h2>
+        <h2 className="text-1xl mb-10 text-center text-black">(Totally legit reviews btw)</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {testimonials.map((testimonial, index) => (
             <motion.div
