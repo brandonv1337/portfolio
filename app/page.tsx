@@ -16,7 +16,7 @@ const testimonials = [
   { name: 'Sharon Valadez', role: 'Mom', text: 'I love you, papi!', image: '/img/sharonValadez.jpg' },
   { name: 'Moises Valadez', role: 'Dad', text: 'Orgulloso de ti mi hijo', image: '/img/moisesValadez.png' },
   { name: 'Michael Valadez', role: 'Brother / Civil Engineer', text: 'Love u manito, proud of u', image: '/img/michaelValadez.jpeg' },
-  { name: 'Odilia D. Castoreno', role: 'Full Time Grandma', text: 'Estan buenos', image: '/img/odieCastoreno.jpg' },
+  { name: 'Odilia D. Castoreno', role: 'Full Time Grandma', text: 'Estan buenos', image: '/img/odieCastoreno.png' },
 ]
 
 export default function HomePage() {
