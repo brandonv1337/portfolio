@@ -65,13 +65,13 @@ export default function HomePage() {
           {projects.map((project) => (
             <motion.div
               key={project.name}
-              className="bg-card text-card-foreground rounded-lg shadow-lg overflow-hidden"
+              className="bg-card text-black dark:text-black rounded-lg shadow-lg overflow-hidden"
               whileHover={{ scale: 1.03 }}
             >
               <Image src={project.image} alt={project.name} width={500} height={300} className="w-full h-[400px] object-cover" />
               <div className="p-8">
                 <h3 className="text-2xl font-semibold mb-4">{project.name}</h3>
-                <p className="text-muted-foreground">{project.description}</p>
+                <p className="text-black dark:text-black">{project.description}</p>
               </div>
             </motion.div>
           ))}
@@ -89,15 +89,15 @@ export default function HomePage() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-card text-card-foreground rounded-lg shadow-lg p-8"
+              className="bg-card text-black dark:text-black rounded-lg shadow-lg p-8"
               whileHover={{ scale: 1.05 }}
             >
-              <p className="mb-6 text-lg italic">&ldquo;{testimonial.text}&rdquo;</p>
+              <p className="mb-6 text-lg text-black dark:text-black italic">&ldquo;{testimonial.text}&rdquo;</p>
               <div className="flex items-center">
                 <Image src={testimonial.image} alt={testimonial.name} width={50} height={50} className="rounded-full mr-4 object-cover" />
                 <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="font-semibold text-black dark:text-black">{testimonial.name}</p>
+                  <p className="text-sm text-black dark:text-black">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>
