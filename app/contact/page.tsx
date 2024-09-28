@@ -19,7 +19,7 @@ export default function ContactPage() {
       </motion.h1>
       <div className="grid grid-cols-1 flex justify-items-center pt-10">
         <motion.div 
-          className="bg-card text-card-foreground rounded-lg shadow-lg p-8"
+          className="bg-card text-black dark:text-black rounded-lg shadow-lg p-8"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
