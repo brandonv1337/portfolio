@@ -2,8 +2,10 @@
 
 import './globals.css'
 import { Inter, Roboto_Mono, Playfair_Display } from 'next/font/google'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -20,13 +22,10 @@ const playfair_display = Playfair_Display({
   variable: '--font-playfair-display',
 })
 
-
-
-
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  
-
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const menuItems = [
     { href: '/', label: 'Home' },
@@ -46,15 +45,40 @@ function Header() {
               </motion.div>
             ))}
           </div>
+          <button className="md:hidden text-white" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </nav>
       </div>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-yellow-900"
+          >
+            <div className="container mx-auto px-4 py-4">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block py-2 hover:text-yellow-400 transition-colors"
+                  onClick={toggleMenu}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
 
 function Footer() {
-
-
   return (
     <footer className="bg-black text-white p-6 mt-8">
       <div className="container mx-auto flex flex-col justify-between items-center">
@@ -71,13 +95,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} ${roboto_mono.className} ${playfair_display.className}`}>
-
-        <body className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-grow bg-indigo-50">{children}</main>
-          <Footer />
-        </body>
-
+      <body className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow bg-indigo-50">{children}</main>
+        <Footer />
+      </body>
     </html>
   )
 }
