@@ -126,7 +126,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.className} ${roboto_mono.className} ${playfair_display.className} ${isDarkMode ? 'dark' : ''}`}>
-      <body className="min-h-screen flex flex-col bg-white dark:bg-gray-900 transition-colors duration-300">
+      <body className="min-h-screen flex flex-col bg-white dark:bg-white transition-colors duration-300">
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
