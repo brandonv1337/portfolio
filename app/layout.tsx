@@ -4,7 +4,7 @@ import './globals.css'
 import { Inter, Roboto_Mono, Playfair_Display } from 'next/font/google'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const inter = Inter({ 
@@ -107,9 +107,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    setIsDarkMode(darkModeMediaQuery.matches)
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches)
+    }
+
+    darkModeMediaQuery.addEventListener('change', handleChange)
+
+    return () => {
+      darkModeMediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [])
+
   return (
-    <html lang="en" className={`${inter.className} ${roboto_mono.className} ${playfair_display.className}`}>
-      <body className="min-h-screen flex flex-col bg-indigo-50">
+    <html lang="en" className={`${inter.className} ${roboto_mono.className} ${playfair_display.className} ${isDarkMode ? 'dark' : ''}`}>
+      <body className="min-h-screen flex flex-col bg-white dark:bg-gray-900 transition-colors duration-300">
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
