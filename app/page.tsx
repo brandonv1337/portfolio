@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const projects = [
   { name: 'The Stayover', image: '/img/theStayover.jpg' ,
@@ -13,46 +13,72 @@ const projects = [
 ]
 
 const testimonials = [
-  { name: 'Sharon Valadez', role: 'Mom', text: 'I love you, papi!', image: '/img/sharonValadez.jpg' },
-  { name: 'Moises Valadez', role: 'Dad', text: 'Orgulloso de ti mi hijo', image: '/img/moisesValadez.png' },
+  { name: 'Sharon Valadez', role: 'Mom / Social Worker', text: 'I love you, papi!', image: '/img/sharonValadez.jpg' },
+  { name: 'Moises Valadez', role: 'Dad / General Superintendent', text: 'Orgulloso de ti mi hijo', image: '/img/moisesValadez.png' },
   { name: 'Michael Valadez', role: 'Brother / Civil Engineer', text: 'Love u manito, proud of u', image: '/img/michaelValadez.jpeg' },
-  { name: 'Odilia D. Castoreno', role: 'Full Time Grandma', text: 'Fully recommend! He taught me how to text!', image: '/img/odieCastoreno.png' }
+  { name: 'Odilia D. Castoreno', role: 'Grandma / Ex-Business Owner', text: 'Fully recommend! He taught me how to text!', image: '/img/odieCastoreno.png' }, 
+  { name: 'Samuel Rodriguez', role: 'Student', text: 'Very good gamer.', image: '/img/samuelRodriguez.png' }
 ]
 
+const roles = ['Web Developer!', 'Game Developer!', 'App Developer!', 'College Student!']
+
 export default function HomePage() {
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [currentRole, setCurrentRole] = useState(0)
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play()
-    }
+    const interval = setInterval(() => {
+      setCurrentRole((prevRole) => (prevRole + 1) % roles.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
   }, [])
+
   return (
     <div className="container mx-auto px-4 py-12">
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-20"
+        className="mb-20"
       >
-        <h1 className="text-5xl font-bold mb-20 text-black dark:text-black font-playfair-display"> Brandon C. Valadez</h1>
-        <div className="mb-10 relative w-full max-w-3xl mx-auto aspect-video">
-  <video
-    ref={videoRef}
-    className="w-full h-full object-cover rounded-lg shadow-lg"
-    loop
-    muted
-    playsInline
-  >
-    <source src="/img/mainPageVideo.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>    
-        <Link href="https://store.steampowered.com" className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent hover:text-accent-foreground transition duration-300 shadow-lg">
-          Wishlist Now!
-        </Link>
+        <h1 className="text-5xl font-bold mb-20 text-black dark:text-black font-playfair-display text-center">Brandon C. Valadez</h1>
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-1/2 mb-8 md:mb-0"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-900">
+              Hi! I am a
+            </h2>
+            <motion.h3
+              key={currentRole}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-4xl font-bold text-indigo-600"
+            >
+              {roles[currentRole]}
+            </motion.h3>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-1/2"
+          >
+            <Image
+              src="/img/brandonValadez.jpg"
+              alt="Brandon C. Valadez"
+              width={350}
+              height={350}
+              className="rounded-lg shadow-lg"
+            />
+          </motion.div>
+        </div>
       </motion.section>
-
 
       <motion.section
         initial={{ opacity: 0 }}
@@ -60,7 +86,7 @@ export default function HomePage() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mb-20"
       >
-        <h2 className="text-4xl font-bold mb-10 text-center text-black dark:text-black">Featured Projects</h2>
+        <h2 className="text-4xl font-bold mt-30 mb-10 text-center text-black dark:text-black">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {projects.map((project) => (
             <motion.div
